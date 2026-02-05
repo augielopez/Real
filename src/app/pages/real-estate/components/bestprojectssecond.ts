@@ -16,7 +16,7 @@ import { RealEstateBestProjects } from "./bestprojects";
         },
         {
           image: '/pages/real-estate/best-project-5.jpg',
-          title: 'Top 10 Home Renovation Trends of 2025',
+          title: 'Top 10 Home Renovation Trends of 2026',
           description:
             'Stay ahead of the curve with the latest home renovation trends. From smart home technology to sustainable materials, find out what’s hot this year.',
         },

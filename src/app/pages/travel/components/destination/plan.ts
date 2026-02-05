@@ -30,7 +30,7 @@ import { CommonModule } from "@angular/common";
           <span class="w-px h-6 bg-white/64"></span>
           <div class="inline-flex items-center gap-2 text-white">
             <i class="pi pi-calendar"></i>
-            <span>Sat, 3 Dec 2025</span>
+            <span>Sat, 3 Dec 2026</span>
           </div>
           <span class="lg:block hidden w-px h-6 bg-white/64"></span>
           <button

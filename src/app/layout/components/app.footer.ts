@@ -101,7 +101,7 @@ import { RouterLink } from "@angular/router";
           <div
             class="w-full lg:w-[calc(100%-5rem)] mt-8 lg:mt-32 pt-10 flex items-center justify-center text-surface-0 border-t border-dashed border-white/10"
           >
-            © 2025 PrimeTek
+            © 2026 BlueGreen
           </div>
         </div>
       </footer>

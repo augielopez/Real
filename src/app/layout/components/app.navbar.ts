@@ -38,7 +38,7 @@ import { ChatPanelService } from "@/layout/service/chat-panel.service";
       </li>
     </ul>
     <div class="hidden lg:flex items-center">
-      <button (click)="openChat()" class="button-regular mr-4 inline-flex items-center gap-2">
+      <button (click)="openChat()" class="button-regular inline-flex items-center gap-2">
         <i class="pi pi-sparkles"></i>
         <span>Ask Miles</span>
       </button>
@@ -104,7 +104,6 @@ export class AppNavbar {
 
   mainLinks = [
     { label: "About", to: "/second-pages/about" },
-    { label: "Contact", to: "/second-pages/contact" },
     { label: "Get Started", to: "/get-started" },
   ];
 }

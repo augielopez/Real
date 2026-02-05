@@ -27,7 +27,7 @@ import { RouterLink } from "@angular/router";
       >
         <img
           class="w-full h-full object-cover absolute inset-0 -z-2"
-          src="/pages/real-estate/hero-background.jpg"
+          src="/pages/real-estate/craftsman-reedley.png"
           alt="Logistic Hero Background Image"
         />
         <div
@@ -46,7 +46,7 @@ import { RouterLink } from "@angular/router";
           <ng-container *ngIf="!isWide()">
             <img
               class="w-full h-full object-cover absolute inset-0 -z-2"
-              src="/pages/real-estate/hero-background.jpg"
+              src="/pages/real-estate/craftsman-reedley.png"
               alt="Logistic Hero Background Image"
             />
             <div
@@ -69,11 +69,11 @@ import { RouterLink } from "@angular/router";
             </div>
           </div>
         </div>
-        <floating-customers
+        <!-- <floating-customers
           className="mt-20"
           iconClass="[&_path]:fill-surface-500 dark:[&_path]:fill-white/64"
           labelClass="text-surface-500 dark:text-white/64"
-        />
+        /> -->
       </div>
     </animated-container>
   `,

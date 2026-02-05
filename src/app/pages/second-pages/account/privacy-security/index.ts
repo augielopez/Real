@@ -28,7 +28,7 @@ import { TextareaModule } from "primeng/textarea";
             class="flex flex-wrap gap-2 items-start justify-between"
           >
             <div class="text-surface-0">Profile updated</div>
-            <span class="text-sm text-white/64">03/05/2025 - 11:46 AM</span>
+            <span class="text-sm text-white/64">03/05/2026 - 11:46 AM</span>
           </div>
         </div>
       </div>
@@ -58,7 +58,7 @@ import { TextareaModule } from "primeng/textarea";
             class="flex flex-wrap gap-2 items-start justify-between"
           >
             <div class="text-surface-0">Login</div>
-            <span class="text-sm text-white/64">03/05/2025 - 11:46 AM</span>
+            <span class="text-sm text-white/64">03/05/2026 - 11:46 AM</span>
           </div>
         </div>
       </div>
