@@ -1,0 +1,15 @@
+{"sessionId":"debug-session","runId":"run1","hypothesisId":"A","location":"chat-sidebar:focusInput","message":"focusInput called","data":{"targetTag":"BUTTON"},"timestamp":1769815704518}
+{"sessionId":"debug-session","runId":"run1","hypothesisId":"D","location":"chat-sidebar:send","message":"send invoked","data":{"inputLen":28},"timestamp":1769815704521}
+{"sessionId":"debug-session","runId":"run1","hypothesisId":"D","location":"chat-sidebar:send","message":"received replyRaw","data":{"replyRaw":"object"},"timestamp":1769815710830}
+{"sessionId":"debug-session","runId":"run1","hypothesisId":"A","location":"chat-sidebar:focusInput","message":"focusInput called","data":{"targetTag":"BUTTON"},"timestamp":1769815736033}
+{"sessionId":"debug-session","runId":"run1","hypothesisId":"D","location":"chat-sidebar:send","message":"send invoked","data":{"inputLen":60},"timestamp":1769815736034}
+{"sessionId":"debug-session","runId":"run1","hypothesisId":"D","location":"chat-sidebar:send","message":"received replyRaw","data":{"replyRaw":"object"},"timestamp":1769815746443}
+{"sessionId":"debug-session","runId":"run1","hypothesisId":"A","location":"chat-sidebar:focusInput","message":"focusInput called","data":{"targetTag":"BUTTON"},"timestamp":1769815950186}
+{"sessionId":"debug-session","runId":"run1","hypothesisId":"D","location":"chat-sidebar:send","message":"send invoked","data":{"inputLen":132},"timestamp":1769815950188}
+{"sessionId":"debug-session","runId":"run1","hypothesisId":"D","location":"chat-sidebar:send","message":"received replyRaw","data":{"replyRaw":"object"},"timestamp":1769815958817}
+{"sessionId":"debug-session","runId":"run1","hypothesisId":"A","location":"chat-sidebar:focusInput","message":"focusInput called","data":{"targetTag":"BUTTON"},"timestamp":1769816007986}
+{"sessionId":"debug-session","runId":"run1","hypothesisId":"D","location":"chat-sidebar:send","message":"send invoked","data":{"inputLen":38},"timestamp":1769816007987}
+{"sessionId":"debug-session","runId":"run1","hypothesisId":"D","location":"chat-sidebar:send","message":"received replyRaw","data":{"replyRaw":"object"},"timestamp":1769816021679}
+{"sessionId":"debug-session","runId":"run1","hypothesisId":"A","location":"chat-sidebar:focusInput","message":"focusInput called","data":{"targetTag":"BUTTON"},"timestamp":1769816085180}
+{"sessionId":"debug-session","runId":"run1","hypothesisId":"D","location":"chat-sidebar:send","message":"send invoked","data":{"inputLen":40},"timestamp":1769816085181}
+{"sessionId":"debug-session","runId":"run1","hypothesisId":"D","location":"chat-sidebar:send","message":"received replyRaw","data":{"replyRaw":"object"},"timestamp":1769816097591}
