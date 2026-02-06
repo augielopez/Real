@@ -9,7 +9,7 @@ export const appRoutes: Routes = [
       {
         path: "",
         loadComponent: () =>
-          import("./app/pages/real-estate/index").then((c) => c.RealEstate),
+          import("./app/pages/second-pages/about/index").then((c) => c.About),
       },
       {
         path: "real-estate",
@@ -35,6 +35,14 @@ export const appRoutes: Routes = [
         path: "get-started",
         loadComponent: () =>
           import("./app/pages/get-started/index").then((c) => c.GetStarted),
+      },
+      {
+        path: "sell",
+        loadComponent: () => import("./app/pages/sell/index").then((c) => c.SellPage),
+      },
+      {
+        path: "buy",
+        loadComponent: () => import("./app/pages/buy/index").then((c) => c.BuyPage),
       },
       {
         path: "404",

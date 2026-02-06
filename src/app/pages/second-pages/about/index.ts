@@ -18,7 +18,6 @@ import { AppFooter } from "@/layout/components/app.footer";
     AppFooter
 ],
   template: `<real-estate-hero />
-  
     <about-vision-mission />
     <about-testimonials />
     <about-team />

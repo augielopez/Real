@@ -12,14 +12,12 @@ import { RouterLink } from "@angular/router";
   imports: [
     AnimatedContainer,
     CommonModule,
-    FloatingCustomers,
     AppNavbar,
     RouterLink,
-    FloatingCustomers,
   ],
   template: `
     <animated-container
-      [className]="isWide() ? 'relative h-[56rem] lg:h-[50rem]' : 'pt-6'"
+      [className]="isWide() ? 'relative h-[56rem] lg:h-[65rem]' : 'pt-6'"
     >
       <div
         *ngIf="isWide()"
@@ -31,7 +29,7 @@ import { RouterLink } from "@angular/router";
           alt="Logistic Hero Background Image"
         />
         <div
-          class="absolute inset-0 -z-1 bg-[linear-gradient(0deg,rgba(0,0,0,0.12)_0%,rgba(0,0,0,0.12)_100%)]"
+          class="absolute inset-0 -z-1 bg-[linear-gradient(0deg,rgba(0,0,0,0.35)_0%,rgba(0,0,0,0.35)_100%)]"
         ></div>
       </div>
 
@@ -54,19 +52,20 @@ import { RouterLink } from "@angular/router";
             ></div>
           </ng-container>
 
-          <app-navbar />
+          <app-navbar className="bg-black/40 rounded-full px-4 py-2" />
           <div class="lg:mt-16 lg:ml-24 mt-10 px-6 lg:px-0">
-            <h1 class="title text-4xl lg:text-8xl leading-tight max-w-5xl">
+            <h1 class="title !text-white drop-shadow-[0_8px_30px_rgba(0,0,0,0.7)] text-4xl lg:text-8xl leading-tight max-w-5xl">
               Discover Your Perfect Dream Home
             </h1>
-            <p class="mt-6 description text-white/72 max-w-lg">
+            <p class="mt-6 description !text-white max-w-lg drop-shadow-md">
               Browse our extensive listings to find the ideal property that fits
               your lifestyle and budget
             </p>
             <div class="mt-8 flex items-center gap-3">
-              <a routerLink="" class="button-regular"> Get Started </a>
+              <a routerLink="" class="button-gradient"> Get Started </a>
               <a routerLink="" class="button-outlined"> Explore </a>
             </div>
+            <!-- hero actions -->
           </div>
         </div>
         <!-- <floating-customers

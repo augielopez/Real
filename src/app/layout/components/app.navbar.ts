@@ -103,7 +103,8 @@ export class AppNavbar {
   twMerge = twMerge;
 
   mainLinks = [
-    { label: "About", to: "/second-pages/about" },
+    { label: "Sell", to: "/sell" },
+    { label: "Buy", to: "/buy" },
     { label: "Get Started", to: "/get-started" },
   ];
 }

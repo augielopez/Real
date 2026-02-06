@@ -26,7 +26,44 @@ interface ColorType {
     SelectButtonModule,
     FormsModule,
   ],
-  template: `<div></div>`,
+  template: `
+    <div class="fixed top-4 right-4 z-[99999]">
+      <button
+        (click)="show = !show"
+        class="w-10 h-10 rounded-full bg-white/90 dark:bg-surface-900 flex items-center justify-center shadow-lg border border-black/10"
+        aria-label="Open theme configurator"
+      >
+        <i class="pi pi-palette"></i>
+      </button>
+
+      <div *ngIf="show" class="absolute right-0 top-12 w-[20rem] rounded-2xl bg-surface-0 dark:bg-surface-950 p-4 shadow-2xl border border-white/8">
+        <div class="flex items-center justify-between mb-3">
+          <div class="text-sm font-semibold text-surface-900 dark:text-surface-0">Theme</div>
+          <button class="text-sm text-surface-500" (click)="show = false">Close</button>
+        </div>
+
+        <div class="mb-3">
+          <div class="text-xs text-surface-500 mb-2">Primary color</div>
+          <div class="flex flex-wrap gap-2">
+            <button
+              *ngFor="let c of primaryColors"
+              (click)="updateColors('primary', c)"
+              [style.background]="c.palette[500]"
+              class="w-8 h-8 rounded-full border border-white/12 shadow-sm"
+              [attr.title]="c.name"
+            ></button>
+          </div>
+        </div>
+
+        <div class="mt-3">
+          <label class="flex items-center gap-3">
+            <input type="checkbox" [checked]="configTheme()" (change)="toggleDarkMode()" />
+            <span class="text-sm text-surface-700 dark:text-surface-200">Dark mode</span>
+          </label>
+        </div>
+      </div>
+    </div>
+  `,
 })
 export class AppConfigurator {
   @Input() className: any = "";
@@ -34,6 +71,7 @@ export class AppConfigurator {
   twMerge = twMerge;
 
   layoutService = inject(LayoutService);
+  show = false;
 
   configTheme = computed(() => this.layoutService.layoutConfig().darkTheme);
 

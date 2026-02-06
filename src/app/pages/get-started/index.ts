@@ -10,6 +10,7 @@ import { InputMaskModule } from "primeng/inputmask";
 import { RouterModule } from "@angular/router";
 import { LayoutService } from "@/layout/service/layout.service";
 import { LeadService } from "@/services/lead.service";
+import { AppFooter } from "@/layout/components/app.footer";
 
 @Component({
   selector: "get-started",
@@ -24,6 +25,7 @@ import { LeadService } from "@/services/lead.service";
     FormsModule,
     CheckboxModule,
     RouterModule,
+    AppFooter,
   ],
   template: ` <animated-container
     [className]="
@@ -255,6 +257,7 @@ import { LeadService } from "@/services/lead.service";
         </div>
       </div>
     </div>
+    <app-footer className="mt-24" />
   </animated-container>`,
   styles: [],
 })
