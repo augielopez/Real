@@ -37,6 +37,11 @@ export const appRoutes: Routes = [
           import("./app/pages/get-started/index").then((c) => c.GetStarted),
       },
       {
+        path: "privacy-policy",
+        loadComponent: () =>
+          import("./app/pages/privacy/index").then((c) => c.Privacy),
+      },
+      {
         path: "sell",
         loadComponent: () => import("./app/pages/sell/index").then((c) => c.SellPage),
       },

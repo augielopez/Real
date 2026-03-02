@@ -7,10 +7,10 @@ import { CheckboxModule } from "primeng/checkbox";
 import { CommonModule } from "@angular/common";
 import { AnimatedContainer } from "@/layout/components/animatedcontainer";
 import { AugieLopezReaLogo } from "@/layout/components/icon/shapes/augie-lopez-rea-logo";
-import { IconGoogle } from "@/layout/components/icon/google";
-import { IconApple } from "@/layout/components/icon/apple";
+// removed social sign-in icons
 import { LayoutService } from "@/layout/service/layout.service";
 import { RouterLink } from "@angular/router";
+import { AppFooter } from "@/layout/components/app.footer";
 
 @Component({
   selector: "signup",
@@ -24,9 +24,8 @@ import { RouterLink } from "@angular/router";
     FormsModule,
     CheckboxModule,
     AugieLopezReaLogo,
-    IconGoogle,
-    IconApple,
     RouterLink,
+    AppFooter,
   ],
   template: ` <animated-container
     [className]="isWide() ? 'bg-main-gradient shadow-black-card' : 'pt-6'"
@@ -61,26 +60,7 @@ import { RouterLink } from "@angular/router";
               <p class="text-xl text-white/64 text-center mt-6">
                 Enter your details to create a new account.
               </p>
-              <div class="flex flex-col gap-8 mt-16">
-                <div class="flex md:flex-row flex-col items-center gap-4">
-                  <button class="md:flex-1 w-full button-blur">
-                    <IconGoogle />
-                    Sign in with Google
-                  </button>
-                  <button class="md:flex-1 w-full button-blur">
-                    <IconApple />
-                    Sign in with Apple
-                  </button>
-                </div>
-                <div class="flex items-center gap-3.5 py-1">
-                  <div
-                    class="flex-1 h-px bg-[linear-gradient(270deg,rgba(255,255,255,0.34)_0%,rgba(255,255,255,0.00)_100%)]"
-                  ></div>
-                  <span class="text-white/72">or</span>
-                  <div
-                    class="flex-1 h-px bg-[linear-gradient(90deg,rgba(255,255,255,0.34)_0%,rgba(255,255,255,0.00)_100%)]"
-                  ></div>
-                </div>
+                <div class="flex flex-col gap-8 mt-16">
                 <div class="flex flex-col gap-2">
                   <label for="signup_username" class="text-surface-0">
                     Username
@@ -151,12 +131,13 @@ import { RouterLink } from "@angular/router";
                     Login
                   </a>
                 </div>
-              </div>
+    </div>
             </form>
           </div>
         </div>
       </div>
     </div>
+    <app-footer className="mt-24" />
   </animated-container>`,
   styles: `
     :host ::ng-deep {

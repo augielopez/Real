@@ -31,23 +31,36 @@ import { NewYorkIcon } from "@/layout/components/icon/shapes/newyork";
             >
               {{ item.title }}
             </div>
-            <p
-              class="mt-4 flex flex-col gap-1 text-lg text-surface-600 dark:text-white/64"
-            >
-              <span *ngFor="let c of item.content; let j = index">{{ c }}</span>
-            </p>
+
+            <div class="mt-4">
+              <ng-container *ngIf="item.title === 'Fresno County — Cities Served'; else normalContent">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 text-lg text-surface-600 dark:text-white/64">
+                  <span *ngFor="let c of item.content" class="inline-block">
+                    {{ c }}
+                  </span>
+                </div>
+              </ng-container>
+
+              <ng-template #normalContent>
+                <p class="flex flex-col gap-1 text-lg text-surface-600 dark:text-white/64">
+                  <span *ngFor="let c of item.content; let j = index">{{ c }}</span>
+                </p>
+              </ng-template>
+            </div>
           </div>
         </animated-container>
       </div>
       <animated-container
         enterClass="animate-slidefadeinright"
-        className="w-full lg:flex-1 relative h-[38rem] rounded-3xl lg:rounded-4xl shadow-blue-card overflow-hidden"
+      className="w-full lg:flex-1 relative h-[38rem] rounded-3xl lg:rounded-4xl shadow-blue-card overflow-hidden"
       >
-        <img
+        <iframe
           class="object-cover w-full h-full"
-          src="/pages/contact/map-image.jpg"
-          alt="Contact Map"
-        />
+          src="https://www.google.com/maps?q=Fresno%2C%20CA&output=embed"
+          frameborder="0"
+          loading="lazy"
+          aria-label="Map of Fresno, CA"
+        ></iframe>
       </animated-container>
     </div>
   `,
@@ -55,19 +68,33 @@ import { NewYorkIcon } from "@/layout/components/icon/shapes/newyork";
 export class ContactAddress {
   contactData = [
     {
-      icon: FloridaIcon,
-      title: "Florida",
-      content: ["1234 Apple St, Faketown, NY, 00000.", "(400) 000 - 0000"],
+      icon: CaliforniaIcon,
+      title: "Fresno",
+      content: [
+        "7785 N. Palm Ave. #108",
+        "Fresno, CA 93711",
+      ],
     },
     {
       icon: CaliforniaIcon,
-      title: "California",
-      content: ["3456 Lime Dr, Feigncity, FL, 33333", "(400) 000 - 0000"],
-    },
-    {
-      icon: NewYorkIcon,
-      title: "New York",
-      content: ["0123 Peach Pl, Deceitdale, IL, 77777", "(400) 000 - 0000"],
+      title: "Fresno County — Cities Served",
+      content: [
+        "Fresno",
+        "Clovis",
+        "Sanger",
+        "Reedley",
+        "Selma",
+        "Kerman",
+        "Fowler",
+        "Parlier",
+        "Kingsburg",
+        "Coalinga",
+        "Mendota",
+        "San Joaquin",
+        "Orange Cove",
+        "Huron",
+        "Firebaugh",
+      ],
     },
   ];
 }

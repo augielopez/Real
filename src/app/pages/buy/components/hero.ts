@@ -3,16 +3,16 @@ import { LayoutService } from "@/layout/service/layout.service";
 import { AnimatedContainer } from "@/layout/components/animatedcontainer";
 import { CommonModule } from "@angular/common";
 import { AppNavbar } from "@/layout/components/app.navbar";
-import { PropertiesSearch, PropertyFilters } from "./properties-search";
+import { PropertyFilters } from "./properties-search";
 import { MiniIntake } from "./mini-intake";
 
 @Component({
   selector: "buy-hero",
   standalone: true,
-  imports: [AnimatedContainer, CommonModule, AppNavbar, PropertiesSearch, MiniIntake],
+  imports: [AnimatedContainer, CommonModule, AppNavbar, MiniIntake],
   template: `
     <animated-container [className]="isWide() ? 'relative h-[56rem] lg:h-[65rem]' : 'pt-6'">
-      <div *ngIf="isWide()" class="absolute w-full h-[calc(100%-6rem)] top-0 left-0">
+      <div *ngIf="isWide()" class="absolute w-full h-full top-0 left-0">
         <img class="w-full h-full object-cover absolute inset-0 -z-2" src="/pages/buy/buy.png" alt="Buy Hero Background" />
         <div class="absolute inset-0 -z-1 bg-[linear-gradient(0deg,rgba(0,0,0,0.35)_0%,rgba(0,0,0,0.35)_100%)]"></div>
       </div>

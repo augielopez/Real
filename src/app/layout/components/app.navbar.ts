@@ -13,7 +13,7 @@ import { ChatPanelService } from "@/layout/service/chat-panel.service";
   template: ` <nav
     [class]="
       twMerge(
-        'flex items-center relative z-[99999] justify-between py-6 w-[calc(100%-3rem)] max-h-[75px] mx-auto border-b border-white/10 border-dashed',
+        'flex items-center relative z-[99999] justify-between py-6 w-full max-h-[75px] border-b border-white/10 border-dashed',
         className
       )
     "

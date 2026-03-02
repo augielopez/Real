@@ -19,8 +19,8 @@ import { AppFooter } from "@/layout/components/app.footer";
 ],
   template: `<real-estate-hero />
     <about-vision-mission />
-    <about-testimonials />
-    <about-team />
+    <!-- <about-testimonials />
+    <about-team /> -->
     <app-faq className="mt-64" />
     <app-footer className="mt-64" />`,
 })

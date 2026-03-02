@@ -19,10 +19,7 @@ import { RouterLink } from "@angular/router";
     <animated-container
       [className]="isWide() ? 'relative h-[56rem] lg:h-[65rem]' : 'pt-6'"
     >
-      <div
-        *ngIf="isWide()"
-        class="absolute w-full h-[calc(100%-6rem)] top-0 left-0"
-      >
+      <div *ngIf="isWide()" class="absolute w-full h-full top-0 left-0">
         <img
           class="w-full h-full object-cover absolute inset-0 -z-2"
           src="/pages/real-estate/craftsman-reedley.png"
@@ -62,8 +59,8 @@ import { RouterLink } from "@angular/router";
               your lifestyle and budget
             </p>
             <div class="mt-8 flex items-center gap-3">
-              <a routerLink="" class="button-gradient"> Get Started </a>
-              <a routerLink="" class="button-outlined"> Explore </a>
+              <a routerLink="/get-started" class="button-gradient"> Get Started </a>
+              <a routerLink="/buy" class="button-outlined"> Explore </a>
             </div>
             <!-- hero actions -->
           </div>

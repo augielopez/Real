@@ -19,13 +19,13 @@ interface MiniFilters {
   imports: [CommonModule, FormsModule, InputTextModule, InputNumberModule, ButtonModule],
   template: `
     <div class="bg-white/4 px-6 md:px-8 py-6 border border-white/8 backdrop-blur-[48px] rounded-2xl lg:rounded-3xl shadow-[0px_2px_5px_0px_rgba(255,255,255,0.06)_inset] max-w-[68rem] w-[92%] mx-auto">
-      <form (ngSubmit)="onSubmit()" class="flex flex-col lg:flex-row gap-6 items-end">
-        <div class="lg:max-w-48 flex flex-col gap-2">
+      <form (ngSubmit)="onSubmit()" class="flex flex-col lg:flex-row gap-6 items-stretch lg:items-end">
+        <div class="w-full lg:max-w-48 flex flex-col gap-2">
           <label class="text-surface-0 text-sm">Where are you looking?</label>
-          <input pInputText [(ngModel)]="city" name="city" placeholder="City or ZIP" class="!bg-white/16 !rounded-full !py-2 !px-4 outline-none !text-white/90 placeholder:!text-surface-0/60" />
+          <input pInputText [(ngModel)]="city" name="city" placeholder="City or ZIP" class="!bg-white/16 !rounded-full !py-2 !px-4 outline-none !text-white/90 placeholder:!text-surface-0/60 w-full" />
         </div>
 
-        <div class="w-36 flex flex-col gap-2">
+        <div class="w-full sm:w-36 flex flex-col gap-2">
           <label class="text-surface-0 text-sm">Beds</label>
           <div class="relative">
             <select
@@ -39,7 +39,7 @@ interface MiniFilters {
           </div>
         </div>
 
-        <div class="w-36 flex flex-col gap-2">
+        <div class="w-full sm:w-36 flex flex-col gap-2">
           <label class="text-surface-0 text-sm">Baths</label>
           <div class="relative">
             <select
@@ -53,19 +53,14 @@ interface MiniFilters {
           </div>
         </div>
 
-        <div class="w-48 flex flex-col gap-2">
+        <div class="w-full sm:w-48 flex flex-col gap-2">
           <label class="text-surface-0 text-sm">Max price</label>
-          <p-inputNumber [(ngModel)]="maxPrice" name="maxPrice" [min]="0" inputId="maxPrice" inputStyleClass="!rounded-full !px-4 !py-2 !bg-white/16 !text-white/90" ></p-inputNumber>
+          <p-inputNumber [(ngModel)]="maxPrice" name="maxPrice" [min]="0" inputId="maxPrice" inputStyleClass="!rounded-full !px-4 !py-2 !bg-white/16 !text-white/90 w-full" ></p-inputNumber>
         </div>
 
-        <div class="flex flex-row gap-4">
-          <div class="flex items-center gap-3.5 mt-4">
-            <button type="button" (click)="reset()" class="!bg-white button-regular w-full py-3">Clear</button>
-          </div>
-
-          <div class="flex items-center gap-3.5 mt-4">
-            <button type="submit" class="button-gradient w-full py-3">Get Started</button>
-          </div>
+        <div class="flex flex-col sm:flex-row gap-4 sm:items-center w-full sm:w-auto">
+          <button type="button" (click)="reset()" class="!bg-white button-regular w-full sm:w-auto py-3">Clear</button>
+          <button type="submit" class="button-gradient w-full sm:w-auto py-3">Get Started</button>
         </div>
       </form>
       <div *ngIf="statusMessage" class="mt-3 text-sm text-surface-500">{{ statusMessage }}</div>

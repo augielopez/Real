@@ -50,15 +50,20 @@ import { RouterLink } from "@angular/router";
             <div
               class="flex-1 flex flex-col justify-between gap-4 py-4 lg:px-0 px-4"
             >
-              <a to="/">
+              <a to="/" class="inline-block">
                 <app-logo />
               </a>
-              <div class="hidden lg:flex items-center gap-2">
+              <div class="flex flex-col items-start gap-3 mt-4">
+                <img src="/real-broker-logo.png" alt="Real Broker logo" class="w-36 h-auto" />
+                <img src="/fair-housing-realtor.png" alt="Equal housing and Realtor logos" class="w-24 h-auto filter invert brightness-200" />
+              </div>
+              <div class="hidden lg:flex items-center gap-2 mt-4">
                 <a
                   *ngFor="let social of socials"
+                  [href]="social.link"
                   target="_blank"
                   class="h-8 px-4 cursor-pointer flex items-center justify-center rounded-full 
-           backdrop-blur-sm text-surface-0 border border-white/12 
+           text-surface-0 border border-white/12 
            bg-white/4 hover:bg-white/12 transition-all"
                 >
                   <i [ngClass]="[social.icon, '!text-sm']"></i>
@@ -92,6 +97,8 @@ import { RouterLink } from "@angular/router";
           <div class="lg:hidden flex items-center justify-center gap-2 mt-52">
             <a
               *ngFor="let item of socials"
+              [href]="item.link"
+              target="_blank"
               class="w-8 h-8 cursor-pointer flex items-center justify-center rounded-full text-surface-0 backdrop-blur-sm border border-white/12 bg-white/4 hover:bg-white/12 transition-all"
             >
               <i [ngClass]="[item.icon, 'text-sm']"></i>
@@ -99,9 +106,24 @@ import { RouterLink } from "@angular/router";
           </div>
 
           <div
-            class="w-full lg:w-[calc(100%-5rem)] mt-8 lg:mt-32 pt-10 flex items-center justify-center text-surface-0 border-t border-dashed border-white/10"
+            class="w-full lg:w-[calc(100%-5rem)] mt-8 lg:mt-32 pt-10 flex items-center justify-between text-surface-0 border-t border-dashed border-white/10"
           >
-            © 2026 BlueGreen
+            <div class="flex items-center gap-3">
+              <div class="rounded-md p-1 bg-white/10 dark:bg-black/20 backdrop-blur-sm">
+                <img src="/alx.png" alt="ALX Systems" class="w-20 h-auto block" />
+              </div>
+              <div class="text-sm text-white">
+                Website Design by
+                <a
+                  href="https://alxsystem.com/schedule-audit"
+                  target="_blank"
+                  class="underline ml-2 text-white"
+                  >ALX Systems</a
+                >
+              </div>
+            </div>
+
+            <div class="text-sm">Copyright &#64; 2026 | <a [routerLink]="'/privacy-policy'" class="underline">Privacy Policy</a></div>
           </div>
         </div>
       </footer>
@@ -116,34 +138,32 @@ export class AppFooter {
   twMerge = twMerge;
 
   socials = [
-    { icon: "pi pi-youtube", link: "" },
-    { icon: "pi pi-twitter", link: "" },
-    { icon: "pi pi-discord", link: "" },
+    { icon: "pi pi-instagram", link: "https://instagram.com" },
+    { icon: "pi pi-facebook", link: "https://facebook.com" },
   ];
 
   footerNavsData = [
     {
-      title: "Landings",
+      title: "Explore",
       items: [
-        { label: "Travel", to: "/" },
         { label: "Real Estate", to: "/real-estate" },
+        { label: "Buy", to: "/buy" },
+        { label: "Sell", to: "/sell" },
       ],
     },
     {
-      title: "Secondary Pages",
+      title: "Company",
       items: [
         { label: "About", to: "/second-pages/about" },
         { label: "Contact", to: "/second-pages/contact" },
+        { label: "Get Started", to: "/get-started" },
       ],
     },
     {
-      title: "Account Pages",
+      title: "Account",
       items: [
         { label: "Sign Up", to: "/second-pages/signup" },
         { label: "Sign In", to: "/second-pages/signin" },
-        { label: "Error", to: "/404" },
-        { label: "Password Reset", to: "/second-pages/reset-password" },
-        { label: "Account General", to: "/second-pages/account" },
       ],
     },
   ];

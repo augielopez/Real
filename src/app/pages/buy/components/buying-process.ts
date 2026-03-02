@@ -1,14 +1,15 @@
 import { Component } from "@angular/core";
 import { CommonModule } from "@angular/common";
-// AnimatedContainer removed — not used in this template
+import { IconHouseBuying } from "@/layout/components/icon/house-buying";
 
 @Component({
   selector: "buying-process",
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, IconHouseBuying],
   template: `
-    <div>
+    <div class="mt-20 lg:mt-32">
       <div class="icon-box">
+        <IconHouseBuying className="w-9 h-9 lg:w-11 lg:h-11" />
       </div>
       <h1
         class="px-6 mt-10 text-3xl lg:text-5xl font-semibold max-w-md mx-auto text-center text-surface-950 dark:text-surface-0 leading-tight"

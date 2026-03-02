@@ -50,19 +50,19 @@ export class AboutVisionMission {
       badge: "Vision",
       title: "Our Vision",
       text: [
-        "Our vision is to enhance our clients’ business processes with cutting-edge technologies, increasing their efficiency and competitiveness. We aim to be a leader in providing innovative solutions that drive transformation and achieve sustainable success in the business world. ",
-        "By understanding the unique needs of each client, we prioritize offering tailored solutions that help them achieve their business goals.",
+        "To be the trusted local real estate partner, helping every client find a place they’re proud to call home. We envision thriving neighborhoods shaped by thoughtful guidance, strong relationships, and a commitment to ethical service.",
+        "We strive to set the standard for client care and market expertise, building lasting value for homeowners and communities alike.",
       ],
-      image: "/pages/about/vision-image.jpg",
+      image: "/pages/real-estate/our-vision_files/augie-water-color.png",
     },
     {
       badge: "Mission",
       title: "Our Mission",
       text: [
-        "Our mission is to deliver the highest quality services to help our clients reach their business objectives. We are dedicated to developing reliable and innovative solutions that simplify our clients’ operations and support their growth. By building long-term relationships based on trust and transparency, we strive to be a constant support for our clients. ",
-        "With a commitment to continuous improvement and customer satisfaction, we aim to make a significant impact in the industry.",
+        "To provide personalized, transparent, and results-driven real estate services that prioritize our clients’ goals. We guide buyers and sellers through every step—offering accurate market insights, tailored marketing strategies, and relentless advocacy.",
+        "Through clear communication and local expertise, we aim to make the buying and selling process simple, confident, and successful for each client.",
       ],
-      image: "/pages/about/mission-image.jpg",
+      image: "/pages/real-estate/our-mission/showing-water-color.png",
     },
   ];
 }

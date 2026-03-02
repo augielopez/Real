@@ -1,4 +1,4 @@
-import { Component, computed, inject, Input } from "@angular/core";
+import { Component, computed, inject, Input, ElementRef, HostListener } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
 import { twMerge } from "tailwind-merge";
@@ -27,7 +27,7 @@ interface ColorType {
     FormsModule,
   ],
   template: `
-    <div class="fixed top-4 right-4 z-[99999]">
+    <div class="fixed bottom-6 right-4 lg:top-4 lg:right-4 z-[100000]">
       <button
         (click)="show = !show"
         class="w-10 h-10 rounded-full bg-white/90 dark:bg-surface-900 flex items-center justify-center shadow-lg border border-black/10"
@@ -36,7 +36,14 @@ interface ColorType {
         <i class="pi pi-palette"></i>
       </button>
 
-      <div *ngIf="show" class="absolute right-0 top-12 w-[20rem] rounded-2xl bg-surface-0 dark:bg-surface-950 p-4 shadow-2xl border border-white/8">
+      <div
+        *ngIf="show"
+        [class]="
+          layoutService.isMobile()
+            ? 'absolute right-0 bottom-14 w-[20rem] rounded-2xl bg-surface-0 dark:bg-surface-950 p-4 shadow-2xl border border-white/8'
+            : 'absolute right-0 top-12 w-[20rem] rounded-2xl bg-surface-0 dark:bg-surface-950 p-4 shadow-2xl border border-white/8'
+        "
+      >
         <div class="flex items-center justify-between mb-3">
           <div class="text-sm font-semibold text-surface-900 dark:text-surface-0">Theme</div>
           <button class="text-sm text-surface-500" (click)="show = false">Close</button>
@@ -50,16 +57,22 @@ interface ColorType {
               (click)="updateColors('primary', c)"
               [style.background]="c.palette[500]"
               class="w-8 h-8 rounded-full border border-white/12 shadow-sm"
+              [ngClass]="{ 'ring-4 ring-offset-2 ring-white/30': isSelected(c) }"
               [attr.title]="c.name"
             ></button>
           </div>
         </div>
 
         <div class="mt-3">
-          <label class="flex items-center gap-3">
-            <input type="checkbox" [checked]="configTheme()" (change)="toggleDarkMode()" />
-            <span class="text-sm text-surface-700 dark:text-surface-200">Dark mode</span>
-          </label>
+          <div class="flex items-center justify-between">
+            <label class="flex items-center gap-3">
+              <input type="checkbox" [checked]="configTheme()" (change)="toggleDarkMode()" />
+              <span class="text-sm text-surface-700 dark:text-surface-200">Dark mode</span>
+            </label>
+            <div class="text-sm font-mono text-surface-500 dark:text-surface-300" *ngIf="selectedHex()">
+              {{ selectedHex() }}
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -72,6 +85,7 @@ export class AppConfigurator {
 
   layoutService = inject(LayoutService);
   show = false;
+  elementRef = inject(ElementRef);
 
   configTheme = computed(() => this.layoutService.layoutConfig().darkTheme);
 
@@ -486,6 +500,36 @@ export class AppConfigurator {
       },
     },
   ];
+
+  isSelected(c: ColorType) {
+    return c.name === this.layoutService.layoutConfig().primary;
+  }
+
+  selectedHex = computed(() => {
+    const name = this.layoutService.layoutConfig().primary;
+    const color = this.primaryColors.find((c) => c.name === name);
+    return color ? color.palette[500] : "";
+  });
+
+  @HostListener("document:click", ["$event"])
+  onDocumentClick(event: MouseEvent) {
+    if (!this.show) return;
+    const target = event.target as Node;
+    if (!this.elementRef.nativeElement.contains(target)) {
+      this.show = false;
+    }
+  }
+
+  constructor() {
+    // Apply initial primary preset and surface palette so the app uses the configured defaults on startup
+    updatePreset(this.getPresetExt());
+    const surf = this.surfaces.find(
+      (s) => s.name === this.layoutService.layoutConfig().surface
+    );
+    if (surf) {
+      updateSurfacePalette(surf.palette);
+    }
+  }
 
   getPresetExt() {
     const color = this.primaryColors.find(

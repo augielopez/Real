@@ -11,7 +11,7 @@ import { SellEstimator } from "./hero-estimator";
   imports: [CommonModule, AnimatedContainer, AppNavbar, SellEstimator],
   template: `
     <animated-container [className]="isWide() ? 'relative h-[56rem] lg:h-[65rem]' : 'pt-6'">
-      <div *ngIf="isWide()" class="absolute w-full h-[calc(100%-6rem)] top-0 left-0">
+      <div *ngIf="isWide()" class="absolute w-full h-full top-0 left-0">
         <img class="w-full h-full object-cover absolute inset-0 -z-2" src="/pages/sell/sell.png" alt="Sell Hero Background" />
         <div class="absolute inset-0 -z-1 bg-[linear-gradient(0deg,rgba(0,0,0,0.35)_0%,rgba(0,0,0,0.35)_100%)]"></div>
       </div>

@@ -20,7 +20,7 @@ import { CommonModule } from "@angular/common";
         Asked Questions
       </h1>
       <p class="text-xl text-center text-surface-500 dark:text-white/64 mt-6">
-        Find quick answers to common questions about our SaaS platform.
+        Find quick answers to common questions about buying and selling homes with us.
       </p>
       <p-accordion
         class="mt-14 flex flex-col gap-4"
@@ -63,24 +63,29 @@ export class AppFAQ {
 
   faqData = [
     {
-      title: "What features does your SaaS platform offer?",
+      title: "How do I schedule a home showing?",
       content:
-        "Our platform offers a wide range of features including real-time collaboration, comprehensive dashboards, automated workflows, and robust security measures.",
+        "You can schedule a showing by contacting us through the property listing page, calling our office, or using the 'Get Started' form. We’ll coordinate a time that works for you and the seller.",
     },
     {
-      title: "How secure is my data on your platform?",
+      title: "How is the listing price determined?",
       content:
-        "We prioritize data security by implementing end-to-end encryption, regular security audits, and strict access controls. Your data is stored in secure, compliant data centers.",
+        "We perform a Comparative Market Analysis (CMA) using recent local sales, current market conditions, and the unique features of your property to recommend a competitive listing price.",
     },
     {
-      title: "Can I integrate your platform with other tools we use?",
+      title: "What are your fees and commissions?",
       content:
-        "Yes, our platform supports integrations with various third-party applications through APIs and native connectors, allowing you to streamline your workflows and enhance productivity.",
+        "Our commission structure is shared upfront during the listing consultation. We focus on delivering value through professional marketing, negotiation, and transaction management to maximize your net proceeds.",
     },
     {
-      title: "Do you offer customer support?",
+      title: "Do you help buyers with financing?",
       content:
-        "Absolutely! We provide 24/7 customer support through multiple channels, including live chat, email, and phone. Our dedicated support team is here to assist you whenever you need help.",
+        "Yes — we can connect buyers with trusted lenders and mortgage brokers to explore loan options, pre-qualification, and down payment guidance to make the buying process smoother.",
+    },
+    {
+      title: "How long does it typically take to sell a home?",
+      content:
+        "Time on market varies by location and price. We’ll provide an estimated timeline during the listing process based on comparable sales and current demand, and actively adjust strategy to reach the right buyers.",
     },
   ];
 }

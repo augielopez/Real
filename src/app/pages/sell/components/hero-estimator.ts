@@ -7,35 +7,42 @@ import { FormsModule } from "@angular/forms";
   standalone: true,
   imports: [CommonModule, FormsModule],
   template: `
-    <div class="max-w-4xl mx-auto">
-      <div class="bg-white/6 backdrop-blur-lg rounded-full p-4 lg:p-5 flex items-center gap-4">
-        <div class="flex-1 min-w-0">
-          <label class="sr-only">Enter your address</label>
+    <div class="bg-white/4 px-6 md:px-8 py-6 border border-white/8 backdrop-blur-[48px] rounded-2xl lg:rounded-3xl shadow-[0px_2px_5px_0px_rgba(255,255,255,0.06)_inset] max-w-[90rem] w-[98%] mx-auto">
+      <h3 class="text-xl lg:text-2xl font-semibold text-surface-0 text-center mb-6">See what your home is worth</h3>
+      <form (ngSubmit)="onNext()" class="flex flex-col lg:flex-row gap-6 items-stretch lg:items-end">
+        <div class="lg:flex-1 flex flex-col gap-2">
+          <label class="text-surface-0 text-sm">Enter your address</label>
           <input
             [(ngModel)]="address"
             name="address"
-            placeholder="Where are you looking? (Address, city or ZIP)"
-            class="w-full bg-transparent rounded-full px-4 py-3 text-sm text-white placeholder-white/70 border border-white/12 outline-none"
+            placeholder="Address, city or ZIP"
+            class="!bg-white/16 !rounded-full !py-2 !px-4 outline-none !text-white/90 placeholder:!text-surface-0/60 w-full"
           />
         </div>
-        <div class="w-36">
-          <label class="sr-only">Unit</label>
+
+        <div class="w-full sm:w-36 flex flex-col gap-2">
+          <label class="text-surface-0 text-sm">Unit Number</label>
           <input
             [(ngModel)]="unit"
             name="unit"
             placeholder="Unit #"
-            class="w-full bg-transparent rounded-full px-4 py-3 text-sm text-white placeholder-white/70 border border-white/12 outline-none"
+            class="!bg-white/16 !rounded-full !py-2 !px-4 !h-11 outline-none !text-white/90 placeholder:!text-white/70 backdrop-blur-[48px] !border-white/12 w-full"
           />
         </div>
-        <div>
-          <button type="submit" (click)="onNext()" class="button-gradient rounded-full px-5 py-3">Get Estimate</button>
+
+        <div class="flex flex-col sm:flex-row gap-4 sm:items-center w-full sm:w-auto">
+          <button type="button"
+            (click)="reset()"
+            class="!bg-white !text-surface-900 rounded-full px-5 py-3 border border-white/12 shadow-sm w-full sm:w-auto">
+            Clear
+          </button>
+
+          <button type="submit" class="button-gradient rounded-full px-5 py-3 w-full sm:w-auto">
+            Get Estimate
+          </button>
         </div>
-      </div>
-      <div class="mt-4 flex justify-center gap-6 text-center text-sm text-white/80">
-        <div>Multiple estimates</div>
-        <div>Actual sold prices</div>
-        <div>Potential buyers</div>
-      </div>
+      </form>
+      <div *ngIf="statusMessage" class="mt-3 text-sm text-surface-500">{{ statusMessage }}</div>
     </div>
   `,
 })
