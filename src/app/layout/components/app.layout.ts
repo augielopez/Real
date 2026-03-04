@@ -4,6 +4,7 @@ import { RouterModule } from "@angular/router";
 import { AppConfigurator } from "./app.configurator";
 import { ChatSidebar } from "@/layout/components/chat-sidebar";
 import { ChatPanelService } from "@/layout/service/chat-panel.service";
+import { IdleService } from "@/layout/service/idle.service";
 
 @Component({
   selector: "app-layout",
@@ -36,5 +37,12 @@ import { ChatPanelService } from "@/layout/service/chat-panel.service";
   </div> `,
 })
 export class AppLayout {
-  constructor(public chatPanel: ChatPanelService) {}
+  constructor(public chatPanel: ChatPanelService, private idle: IdleService) {
+    // start idle tracking once for the SPA
+    try {
+      this.idle.start();
+    } catch (e) {
+      // ignore
+    }
+  }
 }

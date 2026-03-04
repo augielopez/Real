@@ -1,4 +1,5 @@
 import { Component, computed, inject } from "@angular/core";
+import { Router } from "@angular/router";
 import { CirclePattern } from "@/layout/components/circlepattern";
 import { AppNavbar } from "@/layout/components/app.navbar";
 import { InputTextModule } from "primeng/inputtext";
@@ -7,10 +8,10 @@ import { CheckboxModule } from "primeng/checkbox";
 import { CommonModule } from "@angular/common";
 import { AnimatedContainer } from "@/layout/components/animatedcontainer";
 import { AugieLopezReaLogo } from "@/layout/components/icon/shapes/augie-lopez-rea-logo";
-// removed social sign-in icons
 import { LayoutService } from "@/layout/service/layout.service";
 import { RouterLink } from "@angular/router";
 import { AppFooter } from "@/layout/components/app.footer";
+import { AuthService } from "@/layout/service/auth.service";
 
 @Component({
   selector: "signin",
@@ -45,6 +46,7 @@ import { AppFooter } from "@/layout/components/app.footer";
           <app-navbar />
           <div class="pb-6 pt-10 lg:py-24 max-w-[48rem] mx-auto">
             <form
+              (ngSubmit)="onSubmit()"
               class="bg-white/4 px-6 md:px-8 pt-16 pb-12 border border-white/8 backdrop-blur-[48px] rounded-2.5xl lg:rounded-4xl shadow-[0px_2px_5px_0px_rgba(255,255,255,0.06)_inset,0px_12px_20px_0px_rgba(0,0,0,0.06)]"
             >
               <div
@@ -103,9 +105,8 @@ import { AppFooter } from "@/layout/components/app.footer";
                     Forgot password?
                   </a>
                 </div>
-                <button type="submit" class="button-regular w-full py-3">
-                  Login
-                </button>
+                <button type="submit" class="button-regular w-full py-3">Login</button>
+                <div *ngIf="statusMessage" class="mt-3 text-sm text-surface-500">{{ statusMessage }}</div>
                 <div class="text-center">
                   <span class="text-white/64">Not registered? </span>
                   <a
@@ -141,8 +142,59 @@ export class Signin {
   checked: boolean = false;
 
   layoutService = inject(LayoutService);
+  authService = inject(AuthService);
+  router = inject(Router);
 
   isDarkTheme = computed(() => this.layoutService.isDarkTheme());
 
   isWide = computed(() => this.layoutService.isWide());
+  statusMessage: string | null = null;
+
+  async onSubmit() {
+    this.statusMessage = "Sending...";
+
+    const payload = {
+      email: this.email || undefined,
+      password: this.password || undefined,
+      remember: !!this.checked,
+      source: "Website - Signin",
+      date_created: new Date().toISOString(),
+    };
+
+    try {
+      const res = await fetch("https://augielopez.app.n8n.cloud/webhook-test/auth", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) throw new Error(`Request failed: ${res.status}`);
+      
+      const data = await res.json();
+      
+      const token = data.token || data.access_token || data.authToken;
+      const expiresIn = data.expiresIn || data.expires_in;
+      const expiresAt = data.expiresAt || data.expires_at || (expiresIn ? Date.now() + Number(expiresIn) * 1000 : undefined);
+
+      const userSession = {
+        email: this.email,
+        username: data.username || this.email.split('@')[0],
+        clientType: (data.clientType || 'Other') as 'Buyer' | 'Seller' | 'Investor' | 'Other',
+        isNewClient: false,
+        token: token,
+        tokenExpiresAt: expiresAt,
+      };
+
+      this.authService.login(userSession);
+      this.statusMessage = "Signed in successfully!";
+      
+      setTimeout(() => {
+        this.router.navigate(["/client-data"]);
+      }, 1000);
+    } catch (err: any) {
+      this.statusMessage = "An error occurred. Please try again.";
+      console.error("Signin submit error:", err);
+      setTimeout(() => (this.statusMessage = null), 4000);
+    }
+  }
 }

@@ -18,7 +18,7 @@ import { ChatPanelService } from "@/layout/service/chat-panel.service";
       )
     "
   >
-    <a routerLink="/">
+    <a routerLink="/" class="-ml-6 lg:ml-0">
       <app-logo />
     </a>
     <ul class="hidden lg:flex items-center gap-9 mx-auto">

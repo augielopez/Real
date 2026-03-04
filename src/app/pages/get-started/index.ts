@@ -2,6 +2,8 @@ import { Component, computed, inject } from "@angular/core";
 import { AnimatedContainer } from "@/layout/components/animatedcontainer";
 import { AppNavbar } from "@/layout/components/app.navbar";
 import { CirclePattern } from "@/layout/components/circlepattern";
+import { WatercolorPattern } from "@/layout/components/watercolorpattern";
+import { WatercolorPatternStrong } from "@/layout/components/watercolorpattern-strong";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { InputTextModule } from "primeng/inputtext";
@@ -18,7 +20,8 @@ import { AppFooter } from "@/layout/components/app.footer";
   imports: [
     CommonModule,
     AnimatedContainer,
-    CirclePattern,
+    WatercolorPattern,
+    WatercolorPatternStrong,
     AppNavbar,
     InputTextModule,
     InputMaskModule,
@@ -42,8 +45,14 @@ import { AppFooter } from "@/layout/components/app.footer";
             !isWide(),
         }"
       >
-        <circle-pattern
-          className="w-[82rem] absolute -bottom-1/2 translate-y-24 left-1/2 -translate-x-1/2 lg:block hidden"
+        <!-- subtle watercolor on small screens -->
+        <watercolor-pattern
+          className="w-[82rem] absolute -bottom-1/2 translate-y-24 left-1/2 -translate-x-1/2 block lg:hidden"
+        />
+
+        <!-- stronger watercolor on large screens -->
+        <watercolor-pattern-strong
+          className="w-[82rem] absolute -bottom-1/2 translate-y-24 left-1/2 -translate-x-1/2 hidden lg:block"
         />
         <div class="relative z-20 px-6">
           <app-navbar />
@@ -371,6 +380,18 @@ export class GetStarted {
         price_band: this.priceBand,
         date_created: new Date().toISOString(),
       };
+
+      // send to same webhook used by signup/signin (non-blocking for lead creation)
+      try {
+        await fetch("https://augielopez.app.n8n.cloud/webhook-test/auth", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+      } catch (err) {
+        // swallow webhook errors but log for debugging
+        console.error("GetStarted webhook POST failed:", err);
+      }
 
       if (this.leadId) {
         await this.leadService.updateLead(this.leadId, { ...payload });

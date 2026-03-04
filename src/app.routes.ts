@@ -1,5 +1,6 @@
 import { AppLayout } from "@/layout/components/app.layout";
 import { Routes } from "@angular/router";
+import { authGuard } from "./app/layout/service/auth.guard";
 
 export const appRoutes: Routes = [
   {
@@ -35,6 +36,14 @@ export const appRoutes: Routes = [
         path: "get-started",
         loadComponent: () =>
           import("./app/pages/get-started/index").then((c) => c.GetStarted),
+      },
+      {
+        path: "client-data",
+        loadComponent: () =>
+          import("./app/pages/second-pages/client-data/index").then(
+            (c) => c.ClientData
+          ),
+        canActivate: [authGuard],
       },
       {
         path: "privacy-policy",
@@ -95,6 +104,7 @@ export const appRoutes: Routes = [
                 (c) => c.ResetPassword
               ),
           },
+          /* client-data route moved to top-level children to expose as /client-data */
           {
             path: "account",
             loadComponent: () =>
